@@ -11,27 +11,14 @@
 
 <nav class="container">
     <div class="row text-center">
-        <a class="col">Composant list</a>
-        <a class="col">Composant one</a>
-        <a class="col">Composant favs</a>
+        <a [routerLink]="['list']">Composant list</a>
+        <a [routerLink]="['one']">Composant one</a>
+        <a [routerLink]="['favs']">Composant favs</a>
     </div>
 </nav>
 
 <main class="container">
-
-    <!-- Composant List -->
-    <app-list></app-list>
-
-    <hr>
-
-    <!-- Composant Single -->
-    <app-one></app-one>
-
-    <hr>
-
-    <!-- Composant Favoris -->
-    <app-favs></app-favs>
-    
+    <router-outlet></router-outlet>
 </main>
 
 <footer class="container">

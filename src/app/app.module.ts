@@ -19,7 +19,13 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: "", redirectTo: "/list", pathMatch: "full" },
+      { path: "list", component: ListComponent },
+      { path: "favs", component: FavsComponent },
+      { path: "one", component: OneComponent },
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
