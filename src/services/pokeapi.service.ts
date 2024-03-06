@@ -25,5 +25,10 @@ constructor(public http : HttpClient) { }
   }
 
   // Ajoutez votre nouvelle requête ci-dessous :
+  async searchPokemon(name : string) : Promise<Pokemon>{
+    let x = await lastValueFrom(this.http.get<any>("https://pokeapi.co/api/v2/pokemon/" + name.toLowerCase()));
+    console.log(x);
+    return new Pokemon(x.id, x.name, x.sprites.front_default);
+  }
 
 }

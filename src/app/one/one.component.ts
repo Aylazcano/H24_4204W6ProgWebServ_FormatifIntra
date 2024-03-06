@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Pokemon } from 'src/models/pokemon';
 import { PokeapiService } from 'src/services/pokeapi.service';
 
 @Component({
@@ -8,9 +10,21 @@ import { PokeapiService } from 'src/services/pokeapi.service';
 })
 export class OneComponent implements OnInit {
 
-  constructor(public pokeApi : PokeapiService) { }
+  // pokemonName : string | null = null;
+  pokemon : Pokemon | null = null;
+  pokemonName ? : string;
 
-  ngOnInit() {   
+  constructor(public pokeApi : PokeapiService, public data: PokeapiService, public route : ActivatedRoute) { }
+
+  ngOnInit() {
+    
   }
 
+  // créer une fonction qui est appelée quand je clique sur le bouton rechercher
+
+  async btnSearchPokemon() : Promise<void>{
+    if(this.pokemonName){
+      this.pokemon = await this.pokeApi.searchPokemon(this.pokemonName);
+    }
+  }
 }
