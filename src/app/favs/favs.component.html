@@ -4,16 +4,10 @@
 
   <!-- Exemple d'affichage de 2 pokémons favoris -->
 
-  <div class="col-2 pkmn">
-    <h5>Id : 333</h5>
-    <p>Nom : swablu</p>
-    <img class="img-fluid" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/333.png" alt="swablu">
-  </div>
-
-  <div class="col-2 pkmn">
-    <h5>Id : 591</h5>
-    <p>Nom : amoonguss</p>
-    <img class="img-fluid" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/591.png" alt="amoonguss">
+  <div *ngFor="let p of pkmns" class="col-2 pkmn">
+    <h5>Id : {{p.id}}</h5>
+    <p>Nom : {{p.name}}</p>
+    <img class="img-fluid" src="{{p.imgSrc}}">
   </div>
 
 </div>
