@@ -8,8 +8,10 @@ import { Pokemon } from 'src/models/pokemon';
 })
 export class FavsComponent implements OnInit {
 
+  jsonData: string | null = null;
+  pokemonFavList: Pokemon[] = [];
   // Liste de favoris temporaire
-  pkmns : Pokemon[] = 
+  pkmns: Pokemon[] =
     [
       new Pokemon(43, "oddish", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png"),
       new Pokemon(58, "growlithe", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png"),
@@ -19,7 +21,10 @@ export class FavsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    this.jsonData = localStorage.getItem("favPokemons");
+    if (this.jsonData) {
+      this.pokemonFavList = JSON.parse(this.jsonData);
+    }
   }
 
 }
