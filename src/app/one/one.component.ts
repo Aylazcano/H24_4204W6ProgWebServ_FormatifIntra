@@ -11,13 +11,18 @@ import { PokeapiService } from 'src/services/pokeapi.service';
 export class OneComponent implements OnInit {
 
   // pokemonName : string | null = null;
+  jsonData: string | null=null
+  favPokemonsList : Pokemon[] = [];
   pokemon: Pokemon | null = null;
   pokemonName?: string;
 
   constructor(public pokeApi: PokeapiService, public data: PokeapiService, public route: ActivatedRoute) { }
 
   ngOnInit() {
-
+    this.jsonData = localStorage.getItem("favPokemonsList");
+    if(this.jsonData != null){
+      this.favPokemonsList = JSON.parse(this.jsonData);
+    }
   }
 
   // créer une fonction qui est appelée quand je clique sur le bouton rechercher
@@ -28,10 +33,10 @@ export class OneComponent implements OnInit {
     }
   }
 
-  async saveFavPokemon(): Promise<void> {
+  async btnSaveFavPokemon(): Promise<void> {
     if (this.pokemon) {
-      let favPokemons: Pokemon[] = JSON.parse(localStorage.getItem("favPokemons") || "[]");
-      localStorage.setItem("favPokemons", JSON.stringify(this.pokemon));
+      this.favPokemonsList.push(this.pokemon)
+      localStorage.setItem("favPokemonsList", JSON.stringify(this.favPokemonsList));
     }
   }
 }

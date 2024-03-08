@@ -9,7 +9,7 @@ import { Pokemon } from 'src/models/pokemon';
 export class FavsComponent implements OnInit {
 
   jsonData: string | null = null;
-  pokemonFavList: Pokemon[] = [];
+  favPokemonsList: Pokemon[] = [];
   // Liste de favoris temporaire
   pkmns: Pokemon[] =
     [
@@ -21,9 +21,9 @@ export class FavsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.jsonData = localStorage.getItem("favPokemons");
-    if (this.jsonData) {
-      this.pokemonFavList = JSON.parse(this.jsonData);
+    this.jsonData = localStorage.getItem("favPokemonsList");
+    if (this.jsonData != null) {
+      this.favPokemonsList = JSON.parse(this.jsonData);
     }
   }
 
